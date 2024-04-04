@@ -1,4 +1,11 @@
 ![](./assets/RECORRIDOS_DE_GRAFOS.png)
+
+### Nombres
+- Yamil Alan Gonzales Liendo
+- Elias Cristhian Vilca Quispe
+- Berly Esleider Vilca Argandoña
+- Emmanuel del Piero Martinez Salcedo
+
 # Búsqueda en anchura
 En inglés BFS - Breadth First Search es un algoritmo de búsqueda no informada utilizado para recorrer o buscar elementos en un grafo (usado frecuentemente sobre árboles). Intuitivamente, se comienza en la raíz (eligiendo algún nodo como elemento raíz en el caso de un grafo) y se exploran todos los vecinos de este nodo. A continuación para cada uno de los vecinos se exploran sus respectivos vecinos adyacentes, y así hasta que se recorra todo el árbol.
 

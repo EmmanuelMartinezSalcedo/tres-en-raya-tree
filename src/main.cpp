@@ -489,9 +489,9 @@ public:
       for (int i = 0; i < nodoActual->aristas.size(); i++) {
         Nodo* siguiente = (nodoActual->aristas[i]->origen == nodoActual) ? nodoActual->aristas[i]->destino : nodoActual->aristas[i]->origen;
         if (siguiente->color[0] == 0.0f || siguiente->color[0] == 1.0f) {
-          siguiente->color[0] = 0.0f;
+          siguiente->color[0] = 255.0f;
           siguiente->color[1] = 0.0f;
-          siguiente->color[2] = 255.0f;
+          siguiente->color[2] = 0.0f;
           siguiente->distancia = nodoActual->id;
           road.insert(road.begin(),siguiente);
           recorrido += aristas[i]->peso;
@@ -529,7 +529,7 @@ public:
   // BUSQUEDA POR AMPLITUD
   bool amplitud(int nodoInicial, int nodoFinal){
     queue<Nodo*> cola;
-    int recorrido=0;
+    float recorrido=0;
 
     for (int i=0; i < nodos.size(); i++){
       if(nodoInicial==nodos[i]->id){
@@ -656,9 +656,9 @@ public:
 
       for (Arista* edge : current->aristas) {
         Nodo* neighbor = (edge->origen == current) ? edge->destino : edge->origen; // Obtener el vecino del nodo actual
-        neighbor->color[0] = 0.1f;
+        neighbor->color[0] = 1.0f;
         neighbor->color[1] = 0.1f;
-        neighbor->color[2] = 1.0f;
+        neighbor->color[2] = 0.0f;
         // Calcular la distancia euclidiana del vecino al nodo objetivo
         float heuristic = neighbor->heuristic(b);
 
@@ -799,9 +799,9 @@ vector<Nodo*> A_asterisco() {
         {
             if(cola_camino[cola_camino.size()-1]->aristas[i]->destino->id ==cola_camino[cola_camino.size()-1]->id )
             {
-                cola_camino[cola_camino.size()-1]->aristas[i]->origen->color[0] = 0.1f;
+                cola_camino[cola_camino.size()-1]->aristas[i]->origen->color[0] = 1.0f;
                 cola_camino[cola_camino.size()-1]->aristas[i]->origen->color[1] = 0.1f;
-                cola_camino[cola_camino.size()-1]->aristas[i]->origen->color[2] = 1.0f;
+                cola_camino[cola_camino.size()-1]->aristas[i]->origen->color[2] = 0.1f;
 
                  // Acceder directamente al valor a través de la clave
                 if (mapa.count(cola_camino[cola_camino.size()-1]->aristas[i]->origen->id) > 0) {
@@ -830,9 +830,9 @@ vector<Nodo*> A_asterisco() {
 
             }
             else if(cola_camino[cola_camino.size()-1]->aristas[i]->origen->id ==cola_camino[cola_camino.size()-1]->id) {
-                cola_camino[cola_camino.size()-1]->aristas[i]->destino->color[0] = 0.1f;
+                cola_camino[cola_camino.size()-1]->aristas[i]->destino->color[0] = 1.0f;
                 cola_camino[cola_camino.size()-1]->aristas[i]->destino->color[1] = 0.1f;
-                cola_camino[cola_camino.size()-1]->aristas[i]->destino->color[2] = 1.0f;
+                cola_camino[cola_camino.size()-1]->aristas[i]->destino->color[2] = 0.1f;
 
                   // Acceder directamente al valor a través de la clave
                 if (mapa.count(cola_camino[cola_camino.size()-1]->aristas[i]->destino->id) > 0) {
@@ -1027,7 +1027,7 @@ void mouse_callback(GLFWwindow* window, int button, int action, int mods) {
           //cout << nodo->id << ' ';
         }
         cout << endl;
-        //cout << "Distancia recorrida: " << d << endl;
+        cout << "Distancia recorrida: " << d << endl;
       }
       else {
         cout << "Camino no encontrado"<<endl;
@@ -1101,6 +1101,7 @@ int main() {
   x4 =  0.99f;
   y4 = 0.75f;
   z4 = 0.0f;
+  
   for(int i = 0; i <5;i++)
   {
     algoritmos_mostrar.push_back(new Rectangles(x1,x2,x3,x4,y1,y2,y3,y4,z1,z2,z3,z4,0,255,0));
